@@ -1,3 +1,4 @@
+module.exports = Phrase;
 
 //Reverse a string - extend native Prototype
 String.prototype.reverse = function()  {
@@ -10,12 +11,19 @@ function Phrase(content)  {
 
   //Returns processed content - lowercase switched content
   this.processedContent = function processedContent() {
-    return this.content.toLowerCase();
+    return this.letters().toLowerCase();
   }
 
   //Returns boolean result for a palindrome check
   this.palindrome = function palindrome() {
     return (this.processedContent() === this.processedContent().reverse());
+  }
+
+  //Returns only letters from the content
+  this.letters = function letters() {
+    let theLetters = [];
+    const letterRegEx = /[a-z]/i;
+    return Array.from(this.content).filter( character => character.match(/[a-z]/i)).join("");
   }
 }
 
